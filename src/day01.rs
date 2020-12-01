@@ -15,7 +15,7 @@ pub fn run() {
     let mut content = String::new();
     File::open("input/2020/day1.txt").expect("File not found").read_to_string(&mut content).expect("Couldn't read from file");
     let inp = input(&content);
-    println!("{} | {}", solve_part1(&inp), solve_part2(&inp));
+    println!("Day 01: {} | {}", solve_part1(&inp), solve_part2(&inp));
 }
 
 fn solve_part1(input: &[i32]) -> i32 {

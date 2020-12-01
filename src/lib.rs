@@ -1,5 +1,4 @@
 extern crate itertools;
 
-use itertools::Itertools;
-
 pub mod day01;
+pub mod day02;
