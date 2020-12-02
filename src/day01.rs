@@ -21,7 +21,7 @@ fn solve_part1(input: &[i32]) -> i32 {
         )
         .map(|(x, y)| x * y)
         .next()
-        .unwrap()
+        .expect("No solution found")
 }
 
 fn solve_part2(input: &[i32]) -> i32 {
@@ -34,5 +34,5 @@ fn solve_part2(input: &[i32]) -> i32 {
         )
         .map(|((x, y), z)| x * y * z)
         .next()
-        .unwrap()
+        .expect("No solution found")
 }
