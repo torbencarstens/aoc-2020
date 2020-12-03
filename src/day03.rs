@@ -89,6 +89,16 @@ struct Walker<'a> {
     map: &'a Map,
 }
 
+impl<'a> Walker<'a> {
+    fn new(step: Step, map: &'a Map) -> Self {
+        Walker {
+            current: Position { x: 0, y: 0 },
+            step,
+            map
+        }
+    }
+}
+
 impl<'a> Iterator for Walker<'a> {
     type Item = Option<FieldType>;
 
@@ -123,11 +133,7 @@ pub fn run() {
     File::open("input/2020/day3.txt").expect("File not found").read_to_string(&mut content).expect("Couldn't read from file");
 
     let map = parse(&content);
-    let w1 = Walker {
-        current: Position { x: 0, y: 0 },
-        step: Step { x: 1, y: 2 },
-        map: &map,
-    };
+    let w1 = Walker::new(Step { x: 1, y: 2 }, &map);
 
     println!("Day 02: {} | {}", solve_part1(w1), solve_part2(map));
 }
@@ -149,19 +155,14 @@ fn solve_part1(w: Walker) -> i64 {
         .count() as i64
 }
 
-fn solve_part2(m: Map) -> i64 {
+fn solve_part2(map: Map) -> i64 {
     vec![(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
         .into_iter()
         .map(|(x, y)|
             Step { x, y }
         )
-        .map(|step| {
-            Walker {
-                current: Position { x: 0, y: 0 },
-                step,
-                map: &m,
-            }
-        })
+        .map(|step|
+            Walker::new(step, &map))
         .map(solve_part1)
         .fold(1, |a, x| a * x)
 }
