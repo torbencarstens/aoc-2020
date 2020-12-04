@@ -94,7 +94,7 @@ impl<'a> Walker<'a> {
         Walker {
             current: Position { x: 0, y: 0 },
             step,
-            map
+            map,
         }
     }
 }
@@ -135,7 +135,7 @@ pub fn run() {
     let map = parse(&content);
     let w1 = Walker::new(Step { x: 1, y: 2 }, &map);
 
-    println!("Day 02: {} | {}", solve_part1(w1), solve_part2(map));
+    println!("Day 03: {} | {}", solve_part1(w1), solve_part2(map));
 }
 
 fn solve_part1(w: Walker) -> i64 {
