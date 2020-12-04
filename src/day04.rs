@@ -90,37 +90,23 @@ impl Passport {
                 map.insert(s.next().unwrap(), s.next().unwrap());
             });
 
-        let a = ||
-            Some(Passport {
-                byr: map.get("byr")?.parse::<i32>().ok()?,
-                iyr: map.get("iyr")?.parse::<i32>().ok()?,
-                eyr: map.get("eyr")?.parse::<i32>().ok()?,
-                hgt: Height::from(*map.get("hgt")?),
-                hcl: map.get("hcl")?.to_string(),
-                ecl: map.get("ecl")?.to_string(),
-                pid: map.get("pid")?.to_string(),
-                cid: match map.get("cid") {
-                    None => {
-                        Some(0)
-                    }
-                    Some(v) => {
-                        v.parse::<i32>().ok()
-                    }
-                },
-            });
-
-        match a() {
-            None => {
-                if !s.contains("cid") && s.split_whitespace().count() == 7 {
-                    println!("{:?}", map);
-                    println!("{}\n\n", s);
+        Some(Passport {
+            byr: map.get("byr")?.parse::<i32>().ok()?,
+            iyr: map.get("iyr")?.parse::<i32>().ok()?,
+            eyr: map.get("eyr")?.parse::<i32>().ok()?,
+            hgt: Height::from(*map.get("hgt")?),
+            hcl: map.get("hcl")?.to_string(),
+            ecl: map.get("ecl")?.to_string(),
+            pid: map.get("pid")?.to_string(),
+            cid: match map.get("cid") {
+                None => {
+                    Some(0)
                 }
-                None
-            }
-            Some(x) => {
-                Some(x)
-            }
-        }
+                Some(v) => {
+                    v.parse::<i32>().ok()
+                }
+            },
+        })
     }
 }
 
