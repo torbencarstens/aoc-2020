@@ -1,7 +1,6 @@
-use std::fmt::{self, Display, Formatter};
 use std::fs::File;
 use std::io::Read;
-use std::ops::{Add, Index, Range, RangeInclusive};
+use std::ops::{Add};
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 enum FieldType {
@@ -105,7 +104,6 @@ impl<'a> Iterator for Walker<'a> {
     fn next(&mut self) -> Option<Self::Item> {
         let result = self.map.get(self.current.x, self.current.y);
 
-        let a = 1;
         match result {
             None => {
                 None

@@ -1,8 +1,6 @@
 use std::fs::File;
 use std::io::Read;
-use std::ops::{Index, Range, RangeInclusive};
-
-use crate::parse_input_to_numbers;
+use std::ops::RangeInclusive;
 
 #[derive(Clone, Debug)]
 struct Entry<'a> {

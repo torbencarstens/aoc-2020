@@ -1,10 +1,5 @@
-use std::collections::HashMap;
-use std::convert::TryFrom;
-use std::fmt::{self, Display, Formatter};
 use std::fs::File;
 use std::io::Read;
-use std::ops::{Add, Index, Range, RangeInclusive};
-use std::str::Chars;
 
 use itertools::Itertools;
 

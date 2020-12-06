@@ -1,12 +1,6 @@
 use std::collections::HashMap;
-use std::convert::TryFrom;
-use std::fmt::{self, Display, Formatter};
 use std::fs::File;
 use std::io::Read;
-use std::ops::{Add, Index, Range, RangeInclusive};
-use std::str::Chars;
-
-use itertools::Itertools;
 
 #[derive(Clone, Debug)]
 struct Height {
@@ -64,7 +58,7 @@ impl Passport {
             && c.chars().nth(0).unwrap() == '#'
             && c.chars().skip(1).filter(|c|
             (48..=57)
-                .chain((97..=102))
+                .chain(97..=102)
                 .map(char::from)
                 .any(|_c| &_c == c)
         ).count() == 6
