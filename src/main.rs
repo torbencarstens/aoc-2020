@@ -1,5 +1,5 @@
 extern crate aoc;
 
 fn main() {
-    aoc::day08::run();
+    aoc::day09::run();
 }
